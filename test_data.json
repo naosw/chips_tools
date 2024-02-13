@@ -1,0 +1,30 @@
+{
+  "games" : [
+    {
+      "title" : "Chip's Challenge",
+      "year": 1989
+    },
+    {
+      "title" : "Chip's Challenge",
+      "year" : 2015
+    },
+    {
+      "title" : "Test",
+      "year": 2000
+    }
+  ],
+  "platform" : [
+    {
+      "launchYear" : 1989,
+      "name" : "Atari Lynx"
+    },
+    {
+      "launchYear" : 2003,
+      "name" : "Steam"
+    },
+    {
+      "launchYear" : 2000,
+      "name" : "Steam"
+    }
+  ]
+}
