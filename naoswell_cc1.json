@@ -1,7 +1,12 @@
 {
-  "level" : [
+  "ccLevel" : [
     {
-      "title" : ""
-      }
+      "level_number" : 0,
+      "time" : 0,
+      "num_chips" : 0,
+      "upper_layer" : [],
+      "lower_layer" : [],
+      "optional_fields" : []
+    }
   ]
 }
