@@ -17,7 +17,7 @@ def make_level_pack_from_json( json_data ):
     level_pack = cc_classes.CCLevelPack()
     levels = json_data["levels"]
     for level in levels:
-        new_level = (cc_classes.CCLevel())
+        new_level = cc_classes.CCLevel()
         new_level.level_number = level["level_number"]
         new_level.time = level["time"]
         new_level.num_chips = level["num_chips"]
@@ -28,4 +28,6 @@ def make_level_pack_from_json( json_data ):
     return level_pack
 
 #convert
-cc_dat_utils.write_cc_level_pack_to_dat(make_level_pack_from_json( level_json_data ),"naoswell_cc1.dat")
+#cc_dat_utils.write_cc_level_pack_to_dat(make_level_pack_from_json( level_json_data ),"naoswell_cc1.dat")
+
+print(cc_dat_utils.make_cc_level_pack_from_dat("pfgd_test.dat"))
