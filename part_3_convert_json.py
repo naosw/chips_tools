@@ -36,7 +36,12 @@ def make_level_pack_from_json( json_data ):
                 hint_field = cc_classes.CCMapHintField(field["hint"])
                 optional_field_list.append(hint_field)
             elif field["type_val"] == 10:
-                monster_field = cc_classes.CCMonsterMovementField(field["monsters"])
+                # This is made specifically for the list in json to be a 2D list of coordinates
+                coord_field = []
+                for coordinate in field["monsters"]:
+                    monster_coordinate = cc_classes.CCCoordinate(coordinate[0], coordinate[1])
+                    coord_field.append(monster_coordinate)
+                monster_field = cc_classes.CCMonsterMovementField(coord_field)
                 optional_field_list.append(monster_field)
         new_level.optional_fields = optional_field_list
         level_pack.add_level(new_level)
