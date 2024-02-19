@@ -23,11 +23,29 @@ def make_level_pack_from_json( json_data ):
         new_level.num_chips = level["num_chips"]
         new_level.upper_layer = level["upper_layer"]
         new_level.lower_layer = level["lower_layer"]
-        new_level.optional_fields = level["optional_fields"]
+
+        optional_field_list = []
+        for field in level["optional_fields"]:
+            if field["type_val"] == 3:
+                title_field = cc_classes.CCMapTitleField(field["title"])
+                optional_field_list.append(title_field)
+            elif field["type_val"] == 6:
+                password_field = cc_classes.CCEncodedPasswordField(field["password"])
+                optional_field_list.append(password_field)
+            elif field["type_val"] == 7:
+                hint_field = cc_classes.CCMapHintField(field["hint"])
+                optional_field_list.append(hint_field)
+            elif field["type_val"] == 10:
+                monster_field = cc_classes.CCMonsterMovementField(field["monsters"])
+                optional_field_list.append(monster_field)
+        new_level.optional_fields = optional_field_list
         level_pack.add_level(new_level)
     return level_pack
 
 #convert
-#cc_dat_utils.write_cc_level_pack_to_dat(make_level_pack_from_json( level_json_data ),"naoswell_cc1.dat")
+cc_dat_utils.write_cc_level_pack_to_dat(make_level_pack_from_json( level_json_data ),"naoswell_cc1.dat")
+
 
 print(cc_dat_utils.make_cc_level_pack_from_dat("pfgd_test.dat"))
+#.levels[0].optional_fields[0])
+print(cc_dat_utils.make_cc_level_pack_from_dat("naoswell_cc1.dat"))
