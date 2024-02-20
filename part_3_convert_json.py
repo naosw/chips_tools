@@ -2,21 +2,21 @@ import cc_dat_utils
 import cc_classes
 import json
 
-#Part 3
-#Load your custom JSON file
-#Convert JSON data to CCLevelPack
-#Save converted data to DAT file
+# Part 3
+# Load your custom JSON file
+# Convert JSON data to CCLevelPack
+# Save converted data to DAT file
 
-#load
+# Load the JSON file
 input_json_file = "data/naoswell_cc1.json"
 with open(input_json_file, "r") as reader:
     level_json_data = json.load(reader)
 
 
-def make_level_pack_from_json( json_data ):
-    level_pack = cc_classes.CCLevelPack()
+def make_level_pack_from_json(json_data):
+    level_pack = cc_classes.CCLevelPack()  # Make a blank level pack to put the levels into
     levels = json_data["levels"]
-    for level in levels:
+    for level in levels:  # Set the basic info for each level
         new_level = cc_classes.CCLevel()
         new_level.level_number = level["level_number"]
         new_level.time = level["time"]
@@ -25,7 +25,7 @@ def make_level_pack_from_json( json_data ):
         new_level.lower_layer = level["lower_layer"]
 
         optional_field_list = []
-        for field in level["optional_fields"]:
+        for field in level["optional_fields"]:  # Determine which optional field is being seen
             if field["type_val"] == 3:
                 title_field = cc_classes.CCMapTitleField(field["title"])
                 optional_field_list.append(title_field)
@@ -47,10 +47,6 @@ def make_level_pack_from_json( json_data ):
         level_pack.add_level(new_level)
     return level_pack
 
-#convert
-cc_dat_utils.write_cc_level_pack_to_dat(make_level_pack_from_json( level_json_data ),"naoswell_cc1.dat")
 
-
-print(cc_dat_utils.make_cc_level_pack_from_dat("pfgd_test.dat"))
-#.levels[0].optional_fields[0])
-print(cc_dat_utils.make_cc_level_pack_from_dat("naoswell_cc1.dat"))
+# Convert level pack to actual DAT file
+cc_dat_utils.write_cc_level_pack_to_dat(make_level_pack_from_json(level_json_data), "naoswell_cc1.dat")
