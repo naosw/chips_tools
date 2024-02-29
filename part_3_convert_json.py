@@ -8,7 +8,8 @@ import json
 # Save converted data to DAT file
 
 # Load the JSON file
-input_json_file = "data/naoswell_cc1.json"
+# input_json_file = "data/naoswell_cc1.json"
+input_json_file = "data/naoswell_cc_level_data.json"
 with open(input_json_file, "r") as reader:
     level_json_data = json.load(reader)
 
@@ -49,4 +50,6 @@ def make_level_pack_from_json(json_data):
 
 
 # Convert level pack to actual DAT file
-cc_dat_utils.write_cc_level_pack_to_dat(make_level_pack_from_json(level_json_data), "naoswell_cc1.dat")
+# cc_dat_utils.write_cc_level_pack_to_dat(make_level_pack_from_json(level_json_data), "naoswell_cc1.dat")
+cc_dat_utils.write_cc_level_pack_to_dat(make_level_pack_from_json(level_json_data), "naoswell_cc2.dat")
+
